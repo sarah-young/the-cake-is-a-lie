@@ -18,18 +18,29 @@ Do not use division in your solution."""
 
 def get_products_of_all_ints_except_at_index(lst):
     """Take a list of ints and return product of ints not including the value of the current index"""
-    new_lst = []
 
-    for i in range(len(lst)):
+    products_of_all_ints_before_index = [None] * len(lst)
 
-        for j in range(len(lst)):
-            product = 1
-            if j != i:
-                product = product * lst[j]
-        new_lst.append(product)
+    product = 1
 
-    return new_lst
+    for i in xrange(len(lst)):
+        products_of_all_ints_before_index[i] = product_so_far
+        product_so_far *= lst[i]
 
-lst = [1, 7, 3, 4]
+
+# FIRST ATTEMPT, CORRECT ANSWER, POOR RUNTIME
+    # new_lst = []
+    #
+    # for i in xrange(len(lst)):
+    #
+    #     product = 1
+    #     for j in xrange(len(lst)):
+    #         if j != i:
+    #             product = product * lst[j]
+    #     new_lst.append(product)
+    #
+    # return new_lst
+
+lst = [1, 7, 3, 4, 0]
 sum_lst = get_products_of_all_ints_except_at_index(lst)
 print sum_lst
