@@ -33,8 +33,19 @@ upper bound."""
 def merge_ranges(lst):
     """Merge meeting tuples where appropriate"""
 
+    lst.sort()
 
+    merged_meetings = [lst[0]]
 
-    # We treat the meeting with earlier start time as "first," and the other as "second."
-    # If the end time of the first meeting is equal to or greater than the start time of the second meeting, we merge the two meetings into one time range. The resulting time range's start time is the first meeting's start, and its end time is the later of the two meetings' end times.
+    for current_meeting_st current_meeting_end in lst[1:]:
+        last_merged_meeting_st, last_merged_meeting_end = merged_meetings[-1]
+        # this accounts for merged_meetings[0] when list only has one item
+        
+
+    # We treat the meeting with earlier start time as "first," and the other as
+    # "second."
+    # If the end time of the first meeting is equal to or greater than the start
+    # time of the second meeting, we merge the two meetings into one time range.
+    # The resulting time range's start time is the first meeting's start, and
+    # its end time is the later of the two meetings' end times.
     # Else, we leave them separate.
