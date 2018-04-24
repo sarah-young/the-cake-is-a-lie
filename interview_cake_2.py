@@ -24,8 +24,22 @@ def get_products_of_all_ints_except_at_index(lst):
     product = 1
 
     for i in xrange(len(lst)):
-        products_of_all_ints_before_index[i] = product_so_far
-        product_so_far *= lst[i]
+        products_of_all_ints_before_index[i] = product
+        # assigning current product to index of new get_products_of_all_ints_except_at_index
+        # this takes '1' first so it's always one step behind
+        product *=lst[i]
+        # multiplying the product by the index so on the next round it will be added as the next index in the new get_products_of_all_ints_except_at_index
+        print "Product: ", product
+
+    product = 1
+    for i in xrange(len(lst)-1, -1, -1):
+        products_of_all_ints_before_index[i] *= product
+        # multiplying by the product of everything after the index
+        # starting @ lst[-1]
+        product *= lst[i]
+        print "Product: ", product
+
+    return products_of_all_ints_before_index
 
 
 # FIRST ATTEMPT, CORRECT ANSWER, POOR RUNTIME
@@ -41,6 +55,6 @@ def get_products_of_all_ints_except_at_index(lst):
     #
     # return new_lst
 
-lst = [1, 7, 3, 4, 0]
+lst = [1, 7, 3, 4]
 sum_lst = get_products_of_all_ints_except_at_index(lst)
 print sum_lst
